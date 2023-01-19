@@ -59,11 +59,14 @@ function setupHandlers(app, db, messageChannel) {
         console.log(JSON.stringify(parsedMsg, null, 4)); // JUST PRINTING THE RECEIVED MESSAGE.
 
         // ... ADD YOUR CODE HERE TO PROCESS THE MESSAGE ...
-
+        console.log(`Recommend video ${parsedMsg.id}`)
         console.log("Acknowledging message was handled.");
+
 
         messageChannel.ack(msg); // If there is no error, acknowledge the message.
     };
+
+
 
     return messageChannel.assertExchange("viewed", "fanout") // Assert that we have a "viewed" exchange.
         .then(() => {
